@@ -1,13 +1,9 @@
 /*
-Nom: Moussa Bâ
-NI: A00170392
-
-Devoir 3
-
+Nom: Moussa BÃ¢
 */
 
 /*
-Programme consistant à faire le Bin Packing best fit
+Programme consistant Ã  faire le Bin Packing best fit
 */
 
 #include <iostream>
@@ -25,17 +21,17 @@ using namespace std;
 
 
 
-class off_line								//classe ou nos méthodes vont nous permettre defaire le Bin Packing
+class off_line								//classe ou nos mÃ©thodes vont nous permettre defaire le Bin Packing
 {
 	
 public:
 	
-	int taille;														// taille de notre tableau de valeurs triées
-	int nb;							//Nombre de ben crés
+	int taille;														// taille de notre tableau de valeurs triÃ©es
+	int nb;							//Nombre de ben crÃ©s
 	vector< float>  ben;				//vecteur qui va contenir nos ben
-	vector<float> tab_tri;			//vecteur qui va  contenir les valeurs triées issues du fichier
-	 void put_in();					//méthode qui va nous permettre de créer nos bens
-	void tri(float);				//Méthode qui va trier nos valeurs issues du fichier
+	vector<float> tab_tri;			//vecteur qui va  contenir les valeurs triÃ©es issues du fichier
+	 void put_in();					//mÃ©thode qui va nous permettre de crÃ©er nos bens
+	void tri(float);				//MÃ©thode qui va trier nos valeurs issues du fichier
 	void affichage();
 	
 
@@ -66,11 +62,11 @@ void off_line::affichage()					//Affichage
 
 
 
-void off_line::tri(float val)				//tri des valeeurs reçues du fichier
+void off_line::tri(float val)				//tri des valeeurs reÃ§ues du fichier
 {
 	
-	tab_tri.push_back(val);					//on insère dans notre tableau issue la valeur du fichier
-	taille++;								//on incrémente la taille du vecteur
+	tab_tri.push_back(val);					//on insÃ¨re dans notre tableau issue la valeur du fichier
+	taille++;								//on incrÃ©mente la taille du vecteur
 	sort(tab_tri.begin(),tab_tri.end(),myfunction);		//puis on fait le tri
 	
 
@@ -80,43 +76,43 @@ void off_line::tri(float val)				//tri des valeeurs reçues du fichier
  void off_line:: put_in()				
 {
 	
-	int i=0;					//la variable i va déterminer la position du ben
-	int j=0;					//la variable j va déterminer la posiion de la valeur triée choisie
+	int i=0;					//la variable i va dÃ©terminer la position du ben
+	int j=0;					//la variable j va dÃ©terminer la posiion de la valeur triÃ©e choisie
 	int reset=0;
 
-	if(ben.empty())				//si le vecteur des bens est vide, on insère la première valeur du tableau trié dans le vecteur ben
+	if(ben.empty())				//si le vecteur des bens est vide, on insÃ¨re la premiÃ¨re valeur du tableau triÃ© dans le vecteur ben
 		{
 		ben.push_back(tab_tri.at(0));
 		cout<<"Bin (0) a ete cree, valeurs comprises: "<<tab_tri.at(0)<<endl;
 		cout<<"Place restante: "<<1-ben[i]<<endl<<endl;
-		nb++;										//on incrémente le nombre de ben
+		nb++;										//on incrÃ©mente le nombre de ben
 
-		tab_tri.erase(tab_tri.begin());				//puis on efface la valeur du tableau trié
-		taille--;									//et on diminue la taille du tableau trié
+		tab_tri.erase(tab_tri.begin());				//puis on efface la valeur du tableau triÃ©
+		taille--;									//et on diminue la taille du tableau triÃ©
 		
 	}
 	
-	while(!tab_tri.empty())						//tant le tableau trié n'est pas vide
+	while(!tab_tri.empty())						//tant le tableau triÃ© n'est pas vide
 	{
-		while(i<nb && taille>0)						//tant qu'on a pas essayé de combiner tous les ben avec les valeurs du tableau trié
+		while(i<nb && taille>0)						//tant qu'on a pas essayÃ© de combiner tous les ben avec les valeurs du tableau triÃ©
 		{
-			if(ben[i]+tab_tri[j]<=1)			//si la valeur contenue dans le ben additionée à une des valeurs contenues dans le tableau est inférieure à 1
+			if(ben[i]+tab_tri[j]<=1)			//si la valeur contenue dans le ben additionÃ©e Ã  une des valeurs contenues dans le tableau est infÃ©rieure Ã  1
 			{
 				
 				ben[i]=ben[i]+tab_tri[j];		//on remplit le ben
 				cout<<"Bin ("<<i<<"), valeur ajoutee: "<<tab_tri.at(0)<<endl;
 				cout<<"Place restante: "<<1-ben[i]<<endl<<endl;
 				
-				sort(ben.begin(),ben.end(), myfunction);	//on  fait un tri, pour déterminer le cas le plus serré
+				sort(ben.begin(),ben.end(), myfunction);	//on  fait un tri, pour dÃ©terminer le cas le plus serrÃ©
 
-				tab_tri.erase(tab_tri.begin()+j);			//on efface la valeur prise du tableau trié
+				tab_tri.erase(tab_tri.begin()+j);			//on efface la valeur prise du tableau triÃ©
 				taille--;
-				i=nb;						//on affecte j à taille pour sortir de la boucle
+				i=nb;						//on affecte j Ã  taille pour sortir de la boucle
 
-				reset=0;						//on met reset à 0, pour parcourir les ben les plus serrés
+				reset=0;						//on met reset Ã  0, pour parcourir les ben les plus serrÃ©s
 				
 			}
-			else							//sinon on met le reset à -1, pour aller au ben suivants
+			else							//sinon on met le reset Ã  -1, pour aller au ben suivants
 			{
 				reset=-1;
 				i++;
@@ -125,7 +121,7 @@ void off_line::tri(float val)				//tri des valeeurs reçues du fichier
 		}
 		
 		
-		if(taille>0 && reset==-1  )				// si le reset est à -1
+		if(taille>0 && reset==-1  )				// si le reset est Ã  -1
 		{
 			
 
@@ -134,7 +130,7 @@ void off_line::tri(float val)				//tri des valeeurs reçues du fichier
 			{
 				cout<<endl<<endl;
 			
-				ben.push_back(tab_tri.at(0));					//on prend la première valeur du tableau trié et on l'insère dans le ben à la dernière position
+				ben.push_back(tab_tri.at(0));					//on prend la premiÃ¨re valeur du tableau triÃ© et on l'insÃ¨re dans le ben Ã  la derniÃ¨re position
 				cout<<"Bin ("<<nb<<") a ete cree, valeur comprise: "<<tab_tri.at(0)<<endl;
 				cout<<"Place restante: "<<1-ben[i]<<endl<<endl;
 
@@ -144,7 +140,7 @@ void off_line::tri(float val)				//tri des valeeurs reçues du fichier
 		
 			}
 			i=0;
-			j=0;												//pour reparcourir le tableau trié
+			j=0;												//pour reparcourir le tableau triÃ©
 		
 		}
 
@@ -152,7 +148,7 @@ void off_line::tri(float val)				//tri des valeeurs reçues du fichier
 		
 		else	if(taille!=0 && reset==0)				//sinon
 		{
-			i=0;									//on met le i à 0 pour parcourir de nouveau tous les ben selon les plus serrés
+			i=0;									//on met le i Ã  0 pour parcourir de nouveau tous les ben selon les plus serrÃ©s
 			j=0;
 		}
 		
@@ -168,23 +164,23 @@ int main()
 	off_line f;						//instanciation de la classe off_line
 	ifstream lire;					//lecture du fichier
 	lire.open("fichier.txt");		//ouverture du fichier
-	string ligne;					//recupération de la ligne
+	string ligne;					//recupÃ©ration de la ligne
 	float val;						//stockage temporaire de nos valeurs
 	char virgule;					//stockage temporaire de virgules
 	
 	while(!lire.eof())					//tant qu'on a pas sini de lire le fichier
 	{
-	getline(lire,ligne);				//on recupère la ligne
+	getline(lire,ligne);				//on recupÃ¨re la ligne
 	stringstream ss(ligne);
 
-	while(ss>>val>>virgule)					//tant qu'on peut insérer des valeurs de notre fichiers
+	while(ss>>val>>virgule)					//tant qu'on peut insÃ©rer des valeurs de notre fichiers
 	{
 		f.tri(val);					//on fait le tri dans notre vector tab_tri
 		
 	}
 	}
 	lire.close();					//on ferme le fichier
-	f.put_in();						//on appelle à la méthode put_in, pour remplir nos bens
+	f.put_in();						//on appelle Ã  la mÃ©thode put_in, pour remplir nos bens
 	f.affichage();
 
 	
