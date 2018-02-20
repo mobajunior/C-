@@ -1,11 +1,8 @@
+//Nom: Moussa 
+
 /*
-Nom: Moussa 
-
-
 Mon heureustique prendra en compte les ouvertures des joueurs tant que les 3 jetons ne sont pas plaçés. Lorque les trois jetons 
 sont mon heureustique prendra en compte la mobilité des jetons de chaque joueur et la possibilité d'un joueur d'aligner des 3 jetons
-
-
 */
 
 
