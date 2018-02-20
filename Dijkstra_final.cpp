@@ -1,11 +1,7 @@
-/*																Devoir 2
-
-
-Nom: Moussa Bâ
-
+																Devoir 2
+//Nom: Moussa Bâ
+/*
 Programmation de Dijkstra
-
-
 */
 
 
