@@ -1,6 +1,5 @@
+//Nom: Moussa BA
 /*
-Nom: Moussa BA
-
 Projet visant à créer un labyrinthe de dimension 5*5 en utilisant union by size
 */
 
