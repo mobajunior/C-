@@ -1,6 +1,5 @@
-/*
-Nom: Moussa Bâ
-*/
+
+//Nom: Moussa Bâ
 
 /*
 Programme consistant à faire le Bin Packing best fit
