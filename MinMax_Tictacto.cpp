@@ -1,11 +1,9 @@
 /*
 Nom: Moussa 
-Ni: A00170392
 
-Devoir8: Tic-Tac-To
 
-Mon heureustique prendra en compte les ouvertures des joueurs tant que les 3 jetons ne sont pas plaçés. Lorque les trois jetons 
-sont mon heureustique prendra en compte la mobilité des jetons de chaque joueur et la possibilité d'un joueur d'aligner des 3 jetons
+Mon heureustique prendra en compte les ouvertures des joueurs tant que les 3 jetons ne sont pas plaÃ§Ã©s. Lorque les trois jetons 
+sont mon heureustique prendra en compte la mobilitÃ© des jetons de chaque joueur et la possibilitÃ© d'un joueur d'aligner des 3 jetons
 
 
 */
@@ -20,40 +18,40 @@ sont mon heureustique prendra en compte la mobilité des jetons de chaque joueur 
 using namespace std;
 
 
-struct jeton							//cette structure définira le format du Tic-Tac-To
+struct jeton							//cette structure dÃ©finira le format du Tic-Tac-To
 {
 	deque <string> player;				//position de tous les jetons
 	deque <int> X;						//position des jetons de l'ordinateur
 	deque <int> O;						//position des jetons de l'humain
 	int pos;							//position des puzzles fils
-	int fils;							//position du père
-	int poids;							//coût du Tic-Tac-To
+	int fils;							//position du pÃ¨re
+	int poids;							//coÃ»t du Tic-Tac-To
 }
 ;
 
 class Tictacto
 {
 private:
-	deque <deque<jeton>> user;					//deque qui va contenir la raçine, les fils et les petits fils
-	int initialisation;							//variable pour définir lorsque les 3 jetons sont plaçés
+	deque <deque<jeton>> user;					//deque qui va contenir la raÃ§ine, les fils et les petits fils
+	int initialisation;							//variable pour dÃ©finir lorsque les 3 jetons sont plaÃ§Ã©s
 	int value;
 	int bestscore;
 
 public:
 	
 	//int pere;
-	int nb_fils;					//Nombre de fils pour chaque un père Tictato
+	int nb_fils;					//Nombre de fils pour chaque un pÃ¨re Tictato
 	int Ouverture(jeton);
 	int Blocaque(jeton);
 	int Alignement (jeton);
-	void Pere (int);					//Va ddonner le bon déplacement du jeton de l'ordinateur
+	void Pere (int);					//Va ddonner le bon dÃ©placement du jeton de l'ordinateur
 	void Deplacement();
 	//void Minmax(int, int);
-	void MoveGen();						//générateur de mouvements 
+	void MoveGen();						//gÃ©nÃ©rateur de mouvements 
 	//int Static (int, int);
-	bool LegalMove(int, int);		//les déplacements de jetons légaux
+	bool LegalMove(int, int);		//les dÃ©placements de jetons lÃ©gaux
 	void board();					//Affichage
-	void Result(int );				//retourne le meilleur coût de l'ordinateur
+	void Result(int );				//retourne le meilleur coÃ»t de l'ordinateur
 	void MinMax();
 	//void Affichage();
 
@@ -190,9 +188,9 @@ bool Tictacto::LegalMove(int old, int newest)
 	
 }
 
-void Tictacto::Pere(int coord)			//retourne le tic-tac-to fils qui a le meilleur coût
+void Tictacto::Pere(int coord)			//retourne le tic-tac-to fils qui a le meilleur coÃ»t
 {
-	while(user[coord][0].fils>0)			//tant qu'on est pas arrivé au fils de la raçine qui a le meilleur coût
+	while(user[coord][0].fils>0)			//tant qu'on est pas arrivÃ© au fils de la raÃ§ine qui a le meilleur coÃ»t
 	{
 		 Pere(user[user[coord][0].fils][0].fils);
 	}
@@ -214,19 +212,19 @@ void Tictacto::Pere(int coord)			//retourne le tic-tac-to fils qui a le meilleur
 }
 
 
-void Tictacto::Result( int p)			//petit fils qui a le meilleur coût
+void Tictacto::Result( int p)			//petit fils qui a le meilleur coÃ»t
 {
 	int cout=0;
 	deque<jeton> best;
 	int grandP=user[p][0].fils;
-	if(user[0][0].X.size()<3)				//Si les 3 jetons ne sonts pas encore plaçés, on compare les coûts des petits fils 
+	if(user[0][0].X.size()<3)				//Si les 3 jetons ne sonts pas encore plaÃ§Ã©s, on compare les coÃ»ts des petits fils 
 	{
 		for ( unsigned int i=1; i<user[grandP].size(); i++)
 		{
 			for(unsigned int j=1; j<user[grandP+i].size(); j++)
 		{
 			jeton temp;
-			user[grandP+i][j].poids+=Ouverture(user[grandP+i][j])*10;			//pour les coûts des fils on regarde juste les ouvertures
+			user[grandP+i][j].poids+=Ouverture(user[grandP+i][j])*10;			//pour les coÃ»ts des fils on regarde juste les ouvertures
 			temp=user[grandP+i][j];
 			
 			best.push_back(temp);
@@ -237,10 +235,10 @@ void Tictacto::Result( int p)			//petit fils qui a le meilleur coût
 		}
 		
 		user[best[0].fils][0].poids=best[0].poids;					//puis on prend le meilleur 
-		Pere(best[0].fils);											//et on regarde le cheminement qui mène à son père
+		Pere(best[0].fils);											//et on regarde le cheminement qui mÃ¨ne Ã  son pÃ¨re
 	}
 
-	else				//si les trois jetons sont placés
+	else				//si les trois jetons sont placÃ©s
 	
 	
 	{
@@ -250,7 +248,7 @@ void Tictacto::Result( int p)			//petit fils qui a le meilleur coût
 			for(unsigned int j=1; j<user[grandP+i].size(); j++)
 		{
 			jeton temp;
-			user[grandP+i][j].poids+=(Alignement(user[grandP+i][j])+ Blocaque(user[grandP+i][j]))*10;		//on regarde la mobilité et la possibilités d'aligner les 3 jetons ou de bloquer l'alignement de l'humain
+			user[grandP+i][j].poids+=(Alignement(user[grandP+i][j])+ Blocaque(user[grandP+i][j]))*10;		//on regarde la mobilitÃ© et la possibilitÃ©s d'aligner les 3 jetons ou de bloquer l'alignement de l'humain
 			temp=user[grandP+i][j];
 			best.push_back(temp);
 		}
@@ -364,7 +362,7 @@ void Tictacto::Deplacement()
 
 }
 
-int Tictacto::Ouverture(jeton Noeud)				//possibilité d'aligner ses 3 jetons
+int Tictacto::Ouverture(jeton Noeud)				//possibilitÃ© d'aligner ses 3 jetons
 {
 	
 	int libreX=0;
@@ -689,7 +687,7 @@ int Tictacto::Alignement(jeton Noeud)		//si on bloque l'alignement des 3 jetons 
 }
 
 
-void Tictacto::MoveGen()//deque <int> a)			//générateur des fils et des petits fils
+void Tictacto::MoveGen()//deque <int> a)			//gÃ©nÃ©rateur des fils et des petits fils
 {
 	//int x, y=0;
 	int level=0;
