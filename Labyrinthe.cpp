@@ -1,10 +1,7 @@
 /*
-Devoir1: Labyrinthe
-
 Nom: Moussa BA
-NI: A00170392
 
-Projet visant à créer un labyrinthe de dimension 5*5 en utilisant union by size
+Projet visant Ã  crÃ©er un labyrinthe de dimension 5*5 en utilisant union by size
 */
 
 #include <iostream>
@@ -14,7 +11,7 @@ Projet visant à créer un labyrinthe de dimension 5*5 en utilisant union by size
 
 using namespace std;
 
-struct cellule			//structure va contenir de notre tableau de labyrinte va contenir un état le père ou la racine d'un noeud
+struct cellule			//structure va contenir de notre tableau de labyrinte va contenir un Ã©tat le pÃ¨re ou la racine d'un noeud
 						//et une valeur qui indique la position
 {
 	int value;
@@ -26,8 +23,8 @@ class labyrinthe
 private:
 	int taille_laby;			//taille labyrinte sur une dimension
 	int taille_dessin;			//taille dessin de notre graphe
-	cellule *laby;				//pointeur laby de type structure pour créer notre tableau de labyrinthe
-	string *b;					//pointeur b de type pour créer notre grphe
+	cellule *laby;				//pointeur laby de type structure pour crÃ©er notre tableau de labyrinthe
+	string *b;					//pointeur b de type pour crÃ©er notre grphe
 
 public:
 	labyrinthe()				//constructeur
@@ -39,8 +36,8 @@ public:
 	for (int j=0; j<25; j++)
 	{
 		laby[j].value=cpt1++;
-		laby[j].state=-1;					// si state est négatif, cela indique que le noeud est une raçine 
-											// au début tous les noeuds sont des racines
+		laby[j].state=-1;					// si state est nÃ©gatif, cela indique que le noeud est une raÃ§ine 
+											// au dÃ©but tous les noeuds sont des racines
 	}
 
 	taille_dessin=40;						//innitialisation de notre tableau de graphe
@@ -57,13 +54,13 @@ public:
 		delete laby;
 		delete b;
 	};
-	bool same_class(int, int);				//pour déterminer si les noeuds sont dans le même ensemble
-	bool finish();							//si entrée est reliée avec sortie, le labyrinthe a été créé
+	bool same_class(int, int);				//pour dÃ©terminer si les noeuds sont dans le mÃªme ensemble
+	bool finish();							//si entrÃ©e est reliÃ©e avec sortie, le labyrinthe a Ã©tÃ© crÃ©Ã©
 	void union_by_size(int, int);			//fait l'union de deux cellules voisines
 	void detruire_mur(int , int);			//destruit mur de deux cellules voisines
 	void graphe();							//affichage du labyrinthe
 	int find_f(int);						//retourne la racine
-	int voisin_aleatoire(int);				//retourne aléatoirement orientation des voisins 
+	int voisin_aleatoire(int);				//retourne alÃ©atoirement orientation des voisins 
 
 };
 
@@ -78,7 +75,7 @@ int labyrinthe:: voisin_aleatoire(int i)
 	W=-1;
 	E=1;
 
-	if (pos % 5==0)			//définit voisins de la première colonne du labyrinthe
+	if (pos % 5==0)			//dÃ©finit voisins de la premiÃ¨re colonne du labyrinthe
 	{
 		if(pos==0)
 		{
@@ -106,7 +103,7 @@ int labyrinthe:: voisin_aleatoire(int i)
 		}
 	}
 
-	else if (pos<5 && pos>0)		//définit voisins de la première 
+	else if (pos<5 && pos>0)		//dÃ©finit voisins de la premiÃ¨re 
 	{
 		if (pos==4)
 		{
@@ -126,7 +123,7 @@ int labyrinthe:: voisin_aleatoire(int i)
 		}
 	}
 
-	else if(((pos+1)%5)==0)			//définit voisin de la quatrième colonne
+	else if(((pos+1)%5)==0)			//dÃ©finit voisin de la quatriÃ¨me colonne
 	{
 		if(pos==24)
 		{
@@ -145,7 +142,7 @@ int labyrinthe:: voisin_aleatoire(int i)
 		}
 	}
 
-	else if(pos>=21 && pos<=23)		//définit voisins de la quatrième ligne
+	else if(pos>=21 && pos<=23)		//dÃ©finit voisins de la quatriÃ¨me ligne
 	{
 		tab[0]=E;
 		tab[1]=W;
@@ -154,7 +151,7 @@ int labyrinthe:: voisin_aleatoire(int i)
 		return tab[x];
 	}
 
-	else							//définit les voisins des autres cellules du laby
+	else							//dÃ©finit les voisins des autres cellules du laby
 	{
 		tab[0]=S;
 		tab[1]=W;
@@ -167,13 +164,13 @@ int labyrinthe:: voisin_aleatoire(int i)
 int labyrinthe:: find_f(int i)			//retourne la racine de la cellule
 {
 	int x=i;
-	if (laby[x].state<0)				//si c'est inférieur à 0, c'est une raçine
+	if (laby[x].state<0)				//si c'est infÃ©rieur Ã  0, c'est une raÃ§ine
 	{
 		return x;						//on retourne la position
 	}
-	else return find_f(laby[x].state);	//sinon tant qu'on apas trouvé la raçine de la cellule, on fait une autre recherche
+	else return find_f(laby[x].state);	//sinon tant qu'on apas trouvÃ© la raÃ§ine de la cellule, on fait une autre recherche
 }
-void labyrinthe:: graphe()		//on numérote chaque mur du du labyrinthe
+void labyrinthe:: graphe()		//on numÃ©rote chaque mur du du labyrinthe
 {
 	cout<<"========================================"<<endl; 
 	int p=0;
@@ -245,7 +242,7 @@ void labyrinthe:: detruire_mur(int i, int orientation)
 	S=5;
 	W=-1;
 	E=1;
-	int temp= i/5;				//indique la ligne où se trouve la cellule
+	int temp= i/5;				//indique la ligne oÃ¹ se trouve la cellule
 
 	if (orientation==W)		
 	{
@@ -285,12 +282,12 @@ void labyrinthe:: union_by_size(int i, int orientation)
 
 	if(laby[racine1].state< laby[racine2].state)			//si la cellule choisie a plus d'enfants que sa voisine
 	{
-		laby[racine1].state+=laby[racine2].state;			//on décrémente le state de la cellule choisie pour indiquer qu'on a augmenter son nombre d'enfants
-		laby[racine2].state=laby[racine1].value;			//la voisine va avoir comme père la cellule choisie
-		detruire_mur(pos , j);								//et on détruit le mur
+		laby[racine1].state+=laby[racine2].state;			//on dÃ©crÃ©mente le state de la cellule choisie pour indiquer qu'on a augmenter son nombre d'enfants
+		laby[racine2].state=laby[racine1].value;			//la voisine va avoir comme pÃ¨re la cellule choisie
+		detruire_mur(pos , j);								//et on dÃ©truit le mur
 		cout<<"Union entre "<<pos<<" et "<<voisin<<endl;
 	}
-	else													//sinon on fait inversément
+	else													//sinon on fait inversÃ©ment
 		{
 			laby[racine2].state += laby[racine1].state;
 		laby[racine1].state = laby[racine2].value;
@@ -302,11 +299,11 @@ void labyrinthe:: union_by_size(int i, int orientation)
 
 
 
-bool labyrinthe::same_class( int pos, int orientation)		//si les deux cellules sont dans le même ensemble on retourne true sinon false
+bool labyrinthe::same_class( int pos, int orientation)		//si les deux cellules sont dans le mÃªme ensemble on retourne true sinon false
 {
 	int x=pos;
 	int temp= pos +orientation;
-	if (find_f(x)==find_f(temp))					//si les deux cellules ont la même raçine
+	if (find_f(x)==find_f(temp))					//si les deux cellules ont la mÃªme raÃ§ine
 		return false;
 	else return true;
 }
@@ -315,7 +312,7 @@ bool labyrinthe::same_class( int pos, int orientation)		//si les deux cellules s
 
 bool labyrinthe::finish()
 {
- 	if(find_f(0)==find_f(24))				//si arrivée et départ sont connectés
+ 	if(find_f(0)==find_f(24))				//si arrivÃ©e et dÃ©part sont connectÃ©s
 		return true;
 	else return false;
 }
@@ -334,11 +331,11 @@ int main()
 	cout<<"creation labyrinthe"<<endl<<endl;
 	
 
-	while(!l.finish())				//tant qu arrivée et départ ne sont pas connectés
+	while(!l.finish())				//tant qu arrivÃ©e et dÃ©part ne sont pas connectÃ©s
 	{
-		direction=l.voisin_aleatoire(nb_temp);			//génération d'une orientation aléatoire, donnant position des cellules voisines
+		direction=l.voisin_aleatoire(nb_temp);			//gÃ©nÃ©ration d'une orientation alÃ©atoire, donnant position des cellules voisines
 
-		while(! l.same_class(nb_temp, direction))		//si deux cellules dans la même classe
+		while(! l.same_class(nb_temp, direction))		//si deux cellules dans la mÃªme classe
 		{
 			nb_temp = rand()%25;						//on cherche une nouvelle cellule
 			direction=l.voisin_aleatoire(nb_temp);
