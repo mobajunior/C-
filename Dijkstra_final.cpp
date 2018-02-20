@@ -1,8 +1,7 @@
 /*																Devoir 2
 
 
-	Nom: Moussa Bâ
-    NI: A00170392	
+Nom: Moussa BÃ¢
 
 Programmation de Dijkstra
 
@@ -27,20 +26,20 @@ class graphe					//initialisation de notre graphe
 private:
 	 int Vertex;				//Vertex d/termine les noeuds
 	 int *tab;					//pointeur vers un tableau
-	vector<pair<int,int> > *f;		//déclaration d'un pointeur de type vecteur
+	vector<pair<int,int> > *f;		//dÃ©claration d'un pointeur de type vecteur
 
 public:
-	graphe(int const V)				//constructeur qui va déterminer notre nombre de vertex
+	graphe(int const V)				//constructeur qui va dÃ©terminer notre nombre de vertex
 	{
 		Vertex=V;
-		tab= new int [Vertex];				//tableau qui va contenir les noeuds pères
+		tab= new int [Vertex];				//tableau qui va contenir les noeuds pÃ¨res
 		for(int i=0; i<Vertex; i++)
 		{
 			tab[i]=-1;
 		}
 
 		this->Vertex= Vertex;
-		f= new vector<pair<int,int> > [Vertex];			//création des vecteurs ou on va insérer les pères et leurs fils ou voisins
+		f= new vector<pair<int,int> > [Vertex];			//crÃ©ation des vecteurs ou on va insÃ©rer les pÃ¨res et leurs fils ou voisins
 	};
 
 	~graphe()		//destructeur
@@ -48,15 +47,15 @@ public:
 		delete f;
 	};
 	
-	void voisin(int , int , int );			//Création d'un vecteur ou on va insérer en premier les père en premier et ensuite ses fils avec les coûts 
-	void Dijkstra(int );					//Définition de l'alogorithme  Dijkstra
-	void cheminement(int);					//détermine le chemin choisi
+	void voisin(int , int , int );			//CrÃ©ation d'un vecteur ou on va insÃ©rer en premier les pÃ¨re en premier et ensuite ses fils avec les coÃ»ts 
+	void Dijkstra(int );					//DÃ©finition de l'alogorithme  Dijkstra
+	void cheminement(int);					//dÃ©termine le chemin choisi
 
 };
 
-void graphe::cheminement(int destination)		//fonction qui renvoie les pères et la racine
+void graphe::cheminement(int destination)		//fonction qui renvoie les pÃ¨res et la racine
 {
-	if (tab[destination]>=0)					//tant qu'on a pas trouvé la racine, on fait appel à la fonction récursive
+	if (tab[destination]>=0)					//tant qu'on a pas trouvÃ© la racine, on fait appel Ã  la fonction rÃ©cursive
 	{
 		cout<<tab[destination]<<"<-";
 		return cheminement(tab[destination]);
@@ -69,36 +68,36 @@ void graphe::cheminement(int destination)		//fonction qui renvoie les pères et l
 
 void graphe::voisin(int v1, int v2, int cout)
 	{
-		f[v1].push_back(make_pair(v2,cout));		//création de listes des pères avec leurs fils
+		f[v1].push_back(make_pair(v2,cout));		//crÃ©ation de listes des pÃ¨res avec leurs fils
 	}
 
 void graphe::Dijkstra(int depart)
 {
-	int poids[15];									//initialisation d'un tableau qui va contenir les  coûts des trajets
-	bool visite[15];								//initialisation qui va indiquer si un vertex est visité ou non
-	int fils=0;										//variable représentant les fils des vertex pères
+	int poids[15];									//initialisation d'un tableau qui va contenir les  coÃ»ts des trajets
+	bool visite[15];								//initialisation qui va indiquer si un vertex est visitÃ© ou non
+	int fils=0;										//variable reprÃ©sentant les fils des vertex pÃ¨res
 	int pere=depart;
 
 
-	priority_queue < pair<int, int>, vector<pair<int, int> >, greater<pair<int, int> > > pq;		//liste qui nous permet de trier les coûts les plus petits
+	priority_queue < pair<int, int>, vector<pair<int, int> >, greater<pair<int, int> > > pq;		//liste qui nous permet de trier les coÃ»ts les plus petits
 
 		
-		for(int i = 0; i < Vertex; i++)			//Au débuts aucuns des vertexs n'ait visité
+		for(int i = 0; i < Vertex; i++)			//Au dÃ©buts aucuns des vertexs n'ait visitÃ©
 		{
 			poids[i] = 999;
 			visite[i] = false;
 		}
 
 		
-		poids[depart] = 0;					//le poids de la source est initialisée à 0
+		poids[depart] = 0;					//le poids de la source est initialisÃ©e Ã  0
 		
 		
 		pq.push(make_pair(poids[depart], depart));			//insertion de la source dans le vecteur pq
 
-		while(!pq.empty() )		//tant qu'on a pas visité tous les vertex ou qu'on pas trouvé la destination
+		while(!pq.empty() )		//tant qu'on a pas visitÃ© tous les vertex ou qu'on pas trouvÃ© la destination
 		{
-			pair<int, int> v = pq.top();					//v détermine le coût le plus petit dans le vecteur pq
-			pere = v.second;							//pere représente le vertex destination qui a le côût le plus petit
+			pair<int, int> v = pq.top();					//v dÃ©termine le coÃ»t le plus petit dans le vecteur pq
+			pere = v.second;							//pere reprÃ©sente le vertex destination qui a le cÃ´Ã»t le plus petit
 
 			if (visite[pere]==false)					
 			{
@@ -113,20 +112,20 @@ void graphe::Dijkstra(int depart)
 			
 			pq.pop();										//on le retire de la liste
 		
-				visite[pere] = true;							//Après l'avoir retiré de la liste, on le marque visité puis on regarde le coût de ses enfants
+				visite[pere] = true;							//AprÃ¨s l'avoir retirÃ© de la liste, on le marque visitÃ© puis on regarde le coÃ»t de ses enfants
 				
-				vector<pair<int, int> >::iterator it;		//définition d'un itérateur
-				for(it = f[pere].begin(); it != f[pere].end(); it++)		//tant qu'on a pas parcouru tous les fils du pèere
+				vector<pair<int, int> >::iterator it;		//dÃ©finition d'un itÃ©rateur
+				for(it = f[pere].begin(); it != f[pere].end(); it++)		//tant qu'on a pas parcouru tous les fils du pÃ¨ere
 				{
 			
 					fils = it->first;									//Vertex(fils)
-					int cout_arc = it->second;								//coût arc pour aller du père vers le fils
+					int cout_arc = it->second;								//coÃ»t arc pour aller du pÃ¨re vers le fils
 
-					if(poids[fils] > (poids[pere] + cout_arc))				//si le poids du fils  est supérieur à la somme du poids du père et de l'arc
+					if(poids[fils] > (poids[pere] + cout_arc))				//si le poids du fils  est supÃ©rieur Ã  la somme du poids du pÃ¨re et de l'arc
 					{
 					
-						poids[fils] = poids[pere] + cout_arc;					//on définit le nouvel poids du fils
-						pq.push(make_pair(poids[fils], fils));					//et on l'insère dans la 
+						poids[fils] = poids[pere] + cout_arc;					//on dÃ©finit le nouvel poids du fils
+						pq.push(make_pair(poids[fils], fils));					//et on l'insÃ¨re dans la 
 						tab[fils]=pere;
 					}
 				}
@@ -135,26 +134,26 @@ void graphe::Dijkstra(int depart)
 	
 int main()
 {
-	int source=0;				//variable qui détermine choix de la source
+	int source=0;				//variable qui dÃ©termine choix de la source
 	
 
-	graphe D(15);				//référence de notre graphe
+	graphe D(15);				//rÃ©fÃ©rence de notre graphe
 	ifstream lire("fichier.txt");
 	
 	while(!lire.eof())			//lecture de notre fichier texte
 	{
-		string ligne;			//variable qui va recupérer les lignes de notre fichier
+		string ligne;			//variable qui va recupÃ©rer les lignes de notre fichier
 		getline (lire,ligne);
-		stringstream ss(ligne);		//flux qui va récupérer les variable de notre fichier
+		stringstream ss(ligne);		//flux qui va rÃ©cupÃ©rer les variable de notre fichier
 		
 		
 		int vertex=0;
-		ss >> vertex;				//la première variable de la ligne va représenter le père
+		ss >> vertex;				//la premiÃ¨re variable de la ligne va reprÃ©senter le pÃ¨re
 		cout<<"Vertex "<<vertex<<": ";
-		int voisin, arc;			//variable voisin qui correspond aux fils du père et arc détermine le coût de l'arc
-			char parenthese;		//variable qui crrespond au charactère parenthèse
+		int voisin, arc;			//variable voisin qui correspond aux fils du pÃ¨re et arc dÃ©termine le coÃ»t de l'arc
+			char parenthese;		//variable qui crrespond au charactÃ¨re parenthÃ¨se
 
-		while(ss>>voisin>>parenthese>>arc>>parenthese)		//tant que la ligne n'est pas finie, on recupère les variables puis on l'insèere dans des listes de vecteur
+		while(ss>>voisin>>parenthese>>arc>>parenthese)		//tant que la ligne n'est pas finie, on recupÃ¨re les variables puis on l'insÃ¨ere dans des listes de vecteur
 		{
 			cout<<voisin<<" ("<<arc<<")  ";
 			D.voisin(vertex,voisin,arc);
@@ -173,7 +172,7 @@ int main()
 
 	
 
-	D.Dijkstra(source); cout<< endl;		//affichage du coût
+	D.Dijkstra(source); cout<< endl;		//affichage du coÃ»t
 
 	
 	return 0;
